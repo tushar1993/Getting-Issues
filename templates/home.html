@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Final Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body class="container">
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3 text-center">
+            <div class="jumbotron">
+                <h1>Getting Issues</h1>
+            </div>
+            <form method="get" action="output">		
+                <input class="form-control" name="repo" type="text" placeholder="Enter Repository name"><br>
+                <input type="hidden" name="page-no" value="1">
+                <input class="btn btn-success" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

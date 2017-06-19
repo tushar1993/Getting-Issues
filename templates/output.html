@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Issues</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body class="container">
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="alert alert-info" role="alert">Total issues = {{count}}</div>
+            {% for i in range(0,length) %}
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a href={{url_arr[i]}}>{{title_arr[i]}}</a><span style="float:right">#{{no_arr[i]}}</span></div>
+                    <div class="panel-body">
+                        {% if body_arr[i] %}
+                            {{ body_arr[i][:150] }}...<br><br>
+                        {% endif %}
+                        {{ repo_arr[i]}}&nbsp;&nbsp;Opened By&nbsp;{{name_arr[i]}}&nbsp;&nbsp;on&nbsp;&nbsp;{{time_arr[i] }}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="text-center">
+                <button class="btn btn-success" id="previous" onclick="previous()">Previous</button>
+                <button class="btn btn-success" onclick="next()">Next</button>
+            </div>
+        </div>
+    </div>
+    <script>
+    page_number = parseInt(getParameterByName('page-no'));
+    if (page_number == 1) {
+        document.getElementById("previous").disabled = true;
+    } else {
+        document.getElementById("previous").disabled = false;
+    }
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    function previous() {
+        repo = getParameterByName('repo');
+        page_number = parseInt(getParameterByName('page-no'));
+        window.location = '/output/?repo='+repo+'&page-no='+(page_number-1);
+        
+    }
+    function next() {
+        repo = getParameterByName('repo');
+        page_number = parseInt(getParameterByName('page-no'));
+        window.location = '/output/?repo='+repo+'&page-no='+(page_number+1);
+    }
+</script>
+</body>
+</html>
