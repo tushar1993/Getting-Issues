@@ -3,9 +3,7 @@ In this project flask framework of python is used to deploy the same on localhos
 
 To run the project first intsll the required libraries for python3
 
-pip3 install flask
-
-pip3 install json
+sudo pip3 install flask
 
 For running the project open terminal by pressing Alt+Ctrl+T and type "python3 project.py"
 
