@@ -2,12 +2,10 @@ import requests
 import json
 import sys
 from flask import Flask,url_for,render_template, flash, request, redirect
-from wtforms import Form
 import gc
 import os
 
 app=Flask(__name__)
-app.config['DEBUG'] = True
 
 @app.route('/', methods=['GET','POST']) 
 def hello():
@@ -53,4 +51,9 @@ def output():
 	return render_template('output.html',url_arr=url_arr, repo_arr=repo_arr, length=length, title_arr=title_arr, no_arr=no_arr, name_arr=name_arr, time_arr=time_arr, count=count, body_arr=body_arr)
 
 if __name__=='__main__':
-    app.run()
+    HOST=os.environ.get('SERVER_HOST', 'localhost')
+    try:
+        PORT=os.environ.get('SERVER_PORT', '5000')
+    except ValueError:
+        PORT=5000
+    app.run(HOST,PORT)
