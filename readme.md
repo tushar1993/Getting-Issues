@@ -1,7 +1,7 @@
 Following project is used to retrieve all the issues related to a particular repository.
 In this project flask framework of python is used to deploy the same on localhost.
 
-To run the project first intsll the required libraries for python3
+To run the project first install the required libraries for python3
 
 sudo pip3 install flask
 
